@@ -1,16 +1,18 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <img class="mx-auto" src="../public/assets/img/burger.gif" alt="Burger">
+            <img class="img mx-auto d-block w-25" src="assets/img/burger.gif" alt="Burger">
         </div>
     </div>
     <div class="row">
         <div class="col">
             <h1 class="text-center">Eat-Da-Burger</h1>
+            <hr>
         </div>
     </div>
     <div class="row">
         <div class="col-6">
+            <h2 class="text-center">Burgers Ready to Eat</h2>
             <ul>
                 {{#each burgers}}
                 {{#unless devoured}}
@@ -19,7 +21,8 @@
                 {{/each}}
             </ul>
         </div>
-        <div class="col-6">
+        <div class="col-6 border-left">
+            <h2 class="text-center">Burgers that have been Devoured</h2>
             <ul>
                 {{#each burgers}}
                 {{#if devoured}}
@@ -31,12 +34,41 @@
     </div>
     <div class="row">
         <div class="col">
-            <form>
-                <div class="form-group">
+            <form method="POST" action="/api/burgers">
+                <div class="form-group text-center">
+                    <label for="burgerInput">
+                        <h3>Add a New Burger</h3>
+                    </label>
                     <textarea class="form-control mx-auto" id="burgerInput" rows="3" style="width: 400px"></textarea>
+                    <button type="submit" class="btn-small btn-primary mx-auto" id="submit">Submit</button>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
     </div>
 </div>
+
+<script>
+    $(".change-devoured").on("click", function () {
+        const id = $(this).data("id");
+        $.ajax({
+            method: "PUT",
+            url: "/api/burgers/" + id,
+            data: { devoured: 1 }
+        }).done(function () {
+            location.reload();
+        });
+    });
+
+    $("#submit").on("click", (event) => {
+        event.preventDefault();
+        burgerName = $("#burgerInput").val().trim();
+
+        $.ajax({
+            method: "POST",
+            url: "/api/burgers/",
+            data: { name: burgerName }
+        }).done(function () {
+            location.reload();
+        });
+    });
+</script>

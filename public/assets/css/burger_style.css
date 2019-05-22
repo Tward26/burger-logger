@@ -1,0 +1,37 @@
+body {
+    background-color: maroon;
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+ul {
+    list-style-type: none;
+}
+
+li {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.change-devoured {
+    margin-right: 50px;
+}
+
+hr{
+    background-color: white;
+}
+
+h2{
+    margin-bottom: 20px;
+    text-decoration: underline;
+    text-decoration-style: solid;
+    text-decoration-color: white;
+}
+
+h3{
+    margin-top: 20px;
+}
+
+#submit{
+    margin-top: 10px;
+}
