@@ -45,7 +45,6 @@ const orm = {
     updateOne: function (table, objColVals, condition, cb) {
         var queryString = `UPDATE ${table} SET `;
         queryString += objToSql(objColVals);
-        // queryString += objColVals;
         queryString += ` WHERE ${condition};`;
 
         connection.query(queryString, function (err, result) {

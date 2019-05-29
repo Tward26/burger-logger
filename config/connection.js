@@ -1,6 +1,7 @@
 //Code to connect Node to MYSQL
 const mysql = require('mysql');
 
+//Information provided by heroku's jawsdb
 const connection = mysql.createConnection({
   host : 'h40lg7qyub2umdvb.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
   port: 3306,
